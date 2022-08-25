@@ -3,6 +3,7 @@ import java.util.List;
 
 public class OffshorePlatform extends Extractor implements ReportFault {
     public static int FAULT_PERCENTAGE = 70;
+    public static int MAX_NUMBER_OF_DAYS = 14;
     private List<Worker> workers;
 
     public OffshorePlatform(int capacity, int quantity) {
@@ -24,10 +25,10 @@ public class OffshorePlatform extends Extractor implements ReportFault {
     }
 
     private boolean howManyDays() {
-        return workers.stream().anyMatch(worker -> worker.getDaysOnBoard() < 14);
+        return workers.stream().anyMatch(worker -> worker.getDaysOnBoard() < MAX_NUMBER_OF_DAYS);
     }
 
     private boolean extractLessThen() {
-        return (super.getQuantity()*100)/super.getCapacity() > 70;
+        return (super.getQuantity()*100)/super.getCapacity() > FAULT_PERCENTAGE;
     }
 }

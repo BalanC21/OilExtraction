@@ -6,8 +6,8 @@ public class App {
 
         List<Extractor> extractorList = new ArrayList<>();
 
-        extractorList.add(new MobileTerrestrial(1500, 700, "Roma"));
-        extractorList.add(new OffshorePlatform(1500, 1400));
+        extractorList.add(new MobileTerrestrial(1500, 1440, "Roma"));
+        extractorList.add(new OffshorePlatform(1500, 1430));
         extractorList.add(new FixedTerrestrial(1500, 1000, "China"));
         extractorList.add(new OffshorePlatform(1500, 850));
         extractorList.add(new MobileTerrestrial(1500, 750, "Tamas"));
