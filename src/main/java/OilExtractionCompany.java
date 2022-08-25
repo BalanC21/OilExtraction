@@ -21,7 +21,7 @@ public class OilExtractionCompany {
     }
 
     public List<Extractor> getExtractorsWithMoreThan95() {
-        return extractorList.stream().filter(extractor -> extractor.getProcentage() <= 95).collect(Collectors.toList());
+        return extractorList.stream().filter(extractor -> extractor.getProcentage() >= 95).collect(Collectors.toList());
     }
 
     public void addExtractor(Extractor extractor) {
