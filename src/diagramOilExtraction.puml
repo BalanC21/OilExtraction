@@ -1,0 +1,53 @@
+@startuml
+
+class OilExtraction{
+-extractorList: List<Extractor>
++calculateNumberOfDevicesWithFaults()
++getExtractorsWithMoreThan95()
++ addExtractor(extractor: Extractor)
+}
+
+abstract class Extractor{
+-serialNumber: UUID
+-capacity: int
+-quantity: int
+}
+
+abstract class ExtractorWithLocation extends Extractor{
+-location: String
+}
+
+interface ReportFault{
++reportFault():boolean
+}
+
+class FixedTerrestrial extends ExtractorWithLocation{}
+
+class MobileTerrestrial  extends ExtractorWithLocation implements ReportFault{
+- static final FAULT_PERCENTAGE: int
+}
+
+class OffshorePlatform extends Extractor implements ReportFault{
+- static final FAULT_PERCENTAGE: int
+-workers: List<Worker>
++ addWorker(worker: Worker)
+}
+
+class Worker{
+-daysOnBoard: int
+-type: WorkerType
+}
+
+enum WorkerType{
+ MANUAL_WORKER,
+ MEDIC,
+ MANAGER
+}
+
+OilExtraction o-- Extractor
+
+OffshorePlatform o-- Worker
+
+Worker --> WorkerType
+
+@enduml
